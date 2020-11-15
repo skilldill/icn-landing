@@ -7,7 +7,8 @@
             </p>
         </div>
         <div class="phone-block">
-            <img :src="require('../../assets/phones/start-phone.svg')" alt="icn-phone">
+            <img :src="require('../../assets/phones/lock-phone.svg')" alt="icn-phone">
+            <img class="unlock-phone" :src="require('../../assets/phones/start-phone.svg')" alt="icn-phone">
         </div>
         <div class="main-default-content">
             <p>
@@ -51,11 +52,23 @@ export default {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        
+        .phone-block {
+            position: relative;
+
+            .unlock-phone {
+                top: 0;
+                left: 0;
+                position: absolute;
+                transition: all .4s;
+                opacity: 0;
+            }
+        }
 
         &-default-content {
             flex: 1;
             transition: all .8s;
-            transform: translateY(50px);
+            transform: translateY(30px);
             opacity: 0;
 
             p {
@@ -82,8 +95,8 @@ export default {
 
         &-large-content {
             flex: 1;
-            transition: all .5s;
-            transform: translateY(50px);
+            transition: all .8s;
+            transform: translateY(30px);
             opacity: 0;
 
             p {
@@ -104,6 +117,12 @@ export default {
         .main-large-content {
             transform: translateY(0px);
             opacity: 1;
+        }
+
+        .phone-block {
+            .unlock-phone {
+                opacity: 1;
+            }
         }
     }
 </style>

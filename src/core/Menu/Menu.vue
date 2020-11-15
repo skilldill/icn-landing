@@ -22,6 +22,7 @@ export default {
 </script>
 <style lang="scss" scoped>
     .menu {
+        z-index: 1000;
         align-items: center;
         display: flex;
         justify-content: space-between;
