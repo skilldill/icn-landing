@@ -1,13 +1,15 @@
 <template>
   <div id="app">
-    <h1>ICNetworking</h1>
+    <RouterComponent />
   </div>
 </template>
 
 <script>
+import { RouterComponent } from "./routing";
+
 export default {
   name: 'App',
-  components: {}
+  components: { RouterComponent }
 }
 </script>
 
