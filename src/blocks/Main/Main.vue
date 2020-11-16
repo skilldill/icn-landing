@@ -60,7 +60,7 @@ export default {
                 top: 0;
                 left: 0;
                 position: absolute;
-                transition: all .4s;
+                transition: all .9s;
                 opacity: 0;
             }
         }

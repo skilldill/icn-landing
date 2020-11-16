@@ -4,9 +4,9 @@
             <img :src="require('../../assets/icn-logo-menu.svg')" alt="">
         </div>
         <div class="menu-links">
-            <a class="link" href="#working">Как работает</a>
-            <a class="link link-last" href="#benefit">В чем польза</a>
-            <a v-if="showLinkBtn" class="link link-last link-btn" href="#contacts">Попробовать бесплатно</a>
+            <a :class="{'link': true, 'link-translate': !showLinkBtn}" href="#working">Как работает</a>
+            <a :class="{'link link-last': true, 'link-translate': !showLinkBtn}" href="#benefit">В чем польза</a>
+            <a :class="{'link link-last link-btn': true, 'link-btn-show': showLinkBtn }" href="#contacts">Попробовать бесплатно</a>
         </div>
     </div>
 </template>
@@ -15,8 +15,14 @@ export default {
     name: "Menu",
     data() {
         return {
-            showLinkBtn: true
+            showLinkBtn: false
         }
+    },
+
+    mounted() {
+        window.addEventListener('scroll', () => {
+            this.showLinkBtn = window.scrollY >= 500;
+        })
     }
 }
 </script>
@@ -37,13 +43,14 @@ export default {
         }
 
         &-links {
-
             .link {
                 display: inline-block;
                 font-size: 18px;
                 line-height: 27px;
                 color: #222222;
                 text-decoration: none;
+                transition: all .3s;
+                transform: translateX(0px);
             } 
 
             .link-last {
@@ -56,6 +63,15 @@ export default {
                 border-radius: 10px;
                 padding: 10px 40px;
                 color: white;
+                opacity: 0;
+            }
+
+            .link-btn-show {
+                opacity: 1;
+            }
+
+            .link-translate {
+                transform: translateX(410px);
             }
         }
     }
