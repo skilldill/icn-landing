@@ -2,14 +2,20 @@
     <div>
         <Main />
         <Working />
+        <FeaturesList />
         <Benefit />
     </div>
 </template>
 <script>
-import { Main, Working, Benefit } from "../";
+import { Main, Working, FeaturesList, Benefit } from "../";
 
 export default {
     name: "BasePage",
-    components: { Main, Working, Benefit },
+    components: { 
+        Main, 
+        Working, 
+        FeaturesList,
+        Benefit
+    },
 }
 </script>

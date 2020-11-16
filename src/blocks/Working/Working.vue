@@ -60,7 +60,7 @@ export default {
     .working {
         padding: 0 200px;
         padding-top: 140px;
-
+        
         &-title {
             font-weight: bold;
             font-size: 64px;

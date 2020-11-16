@@ -46,7 +46,6 @@ export default {
 </script>
 <style lang="scss" scoped>
     .main {
-        max-width: 1600px;
         padding: 0 100px;
         background-color: #EDF3FB;
         display: flex;
