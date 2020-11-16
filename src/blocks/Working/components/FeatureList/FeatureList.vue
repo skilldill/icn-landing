@@ -1,5 +1,5 @@
 <template>
-    <div class="feature-list">
+    <div :class="{'feature-list': true, 'feature-list-right': fadeDirection === 'right', 'feature-list-left': fadeDirection === 'left', 'feature-list-show': show}">
         <h3 class="feature-list-title">{{ title }}</h3>
         <ul class="feature-list-items">
             <li class="feature-list-item" v-for="item in list" :key="item">
@@ -14,12 +14,17 @@ export default {
     name: "FeatureList",
     props: {
         title: String,
-        list: Array
-    }
+        list: Array,
+        show: Boolean,
+        fadeDirection: String
+    },
 }
 </script>
 <style lang="scss" scoped>
     .feature-list {
+        transition: all .3s;
+        opacity: 0;
+
         &-title {
             font-weight: 500;
             font-size: 48px;
@@ -50,5 +55,18 @@ export default {
                 max-width: 470px;
             }
         }
+    }
+
+    .feature-list-right {
+        transform: translateX(80px);
+    }
+
+    .feature-list-left {
+        transform: translateX(-80px);
+    }
+
+    .feature-list-show {
+        opacity: 1;
+        transform: translateX(0px);
     }
 </style>
