@@ -18,5 +18,6 @@ export default {
     font-family: 'Roboto', sans-serif;
     padding: 0;
     margin: 0;
+    zoom: .9;
   }
 </style>

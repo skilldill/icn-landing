@@ -35,7 +35,7 @@ export default {
             const timeOut = setTimeout(() => {
                 this.mountedClass = "main main-mounted";
                 clearTimeout(timeOut);
-            }, 1000);
+            }, 500);
         }
     },
 
@@ -68,7 +68,7 @@ export default {
         &-default-content {
             flex: 1;
             transition: all .8s;
-            transform: translateY(30px);
+            transform: translateY(-80px);
             opacity: 0;
 
             p {
@@ -96,7 +96,7 @@ export default {
         &-large-content {
             flex: 1;
             transition: all .8s;
-            transform: translateY(30px);
+            transform: translateY(-80px);
             opacity: 0;
 
             p {
