@@ -6,7 +6,7 @@
             </div>
             <div class="menu-links">
                 <a :class="{'link': true, 'link-translate': !showLinkBtn}" href="#working">Как работает</a>
-                <a :class="{'link link-last': true, 'link-translate': !showLinkBtn}" href="#benefit">В чем польза</a>
+                <a :class="{'link link-last': true, 'link-translate': !showLinkBtn}" href="#benefit">В чём польза</a>
                 <a :class="{'link link-last link-btn': true, 'link-btn-show': showLinkBtn }" href="#contacts">Попробовать бесплатно</a>
             </div>
         </div>

@@ -65,8 +65,8 @@ export default {
     mounted() {
         window.addEventListener('scroll', () => {
             this.showProfileList = window.scrollY >= 750;
-            this.showSwipeList = window.scrollY >= 1000;
-            this.showMeetingsList = window.scrollY >= 1520;
+            this.showSwipeList = window.scrollY >= 1200;
+            this.showMeetingsList = window.scrollY >= 1720;
         })
     }
 }
@@ -89,7 +89,7 @@ export default {
         &-block {
             display: flex;
             justify-content: space-between;
-            padding-bottom: 32px;
+            padding-bottom: 128px;
             padding-top: 65px;
 
             .phones {

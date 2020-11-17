@@ -44,12 +44,34 @@ export default {
     mounted() {
         window.addEventListener('scroll', () => {
             console.log(window.scrollY);
-            this.show = window.scrollY >= 2090;
+            this.show = window.scrollY >= 2390;
         })
     }
 }
 </script>
 <style lang="scss" scoped>
+    @keyframes vibration {
+        0% {
+            transform: translateX(5px) rotate(-15deg);
+        }
+
+        25% {
+            transform: translateX(-5px) rotate(15deg);
+        }
+
+        50% {
+            transform: translateX(5px) rotate(-15deg);
+        }
+
+        75% {
+            transform: translateX(-5px) rotate(15deg);
+        }
+
+        100% {
+            transform: translateX(0px) rotate(0deg);
+        }
+    }
+
     .features {
         background-color: #F8F8F8;
         
@@ -80,6 +102,10 @@ export default {
                 img {
                     transition: all .6s;
                     opacity: 0;
+
+                    &:hover {
+                        animation: vibration .3s ease-in 0s;
+                    }
                 }
             }
 

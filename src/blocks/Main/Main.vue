@@ -3,8 +3,7 @@
         <div class="main-content">
             <div class="main-large-content">
                 <p>
-                    <span>Развивайте нетворкинг</span> в вашей компа-
-                    нии без усилий HR-отдела
+                    <span>Развивайте нетворкинг</span> в вашей компании без усилий HR-отдела
                 </p>
             </div>
             <div class="phone-block">
@@ -100,6 +99,7 @@ export default {
                 line-height: 24px;
                 padding: 28px 0;
                 text-align: center;
+                // max-width: 437px;
             }
         }
 
@@ -110,6 +110,7 @@ export default {
             opacity: 0;
 
             p {
+                hyphens: auto;
                 font-size: 64px;
                 line-height: 74px;
                 color: #222222;
