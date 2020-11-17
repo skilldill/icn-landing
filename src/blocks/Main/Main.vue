@@ -16,7 +16,7 @@
                     самостоятельно строить неформальные социальные 
                     связи полезные для вас и компании.
                 </p>
-                <a class="link-btn" href="#contacts">Попробовать бесплатно</a>
+                <a @click.prevent="gotoContacts()" class="link-btn" href="#contacts">Попробовать бесплатно</a>
             </div>
         </div>
     </div>
@@ -37,6 +37,10 @@ export default {
                 this.mountedClass = "main main-mounted";
                 clearTimeout(timeOut);
             }, 500);
+        },
+        
+        gotoContacts() {
+            this.$router.push('/contacts');
         }
     },
 

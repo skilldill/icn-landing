@@ -1,13 +1,15 @@
 <template>
     <div class="menu">
         <div class="menu-content">
-            <div class="menu-logo">
+            <div class="menu-logo" @click="goto('/')">
                 <img :src="require('../../assets/icn-logo-menu.svg')" alt="">
             </div>
             <div class="menu-links">
                 <a :class="{'link': true, 'link-translate': !showLinkBtn}" href="#working">Как работает</a>
                 <a :class="{'link link-last': true, 'link-translate': !showLinkBtn}" href="#benefit">В чём польза</a>
-                <a :class="{'link link-last link-btn': true, 'link-btn-show': showLinkBtn }" href="#contacts">Попробовать бесплатно</a>
+                <a @click.prevent="goto('/contacts')"  :class="{'link link-last link-btn': true, 'link-btn-show': showLinkBtn }" href="#contacts">
+                    Попробовать бесплатно
+                </a>
             </div>
         </div>
     </div>
@@ -18,6 +20,12 @@ export default {
     data() {
         return {
             showLinkBtn: false
+        }
+    },
+
+    methods: {
+        goto(path) {
+            this.$router.push(path);
         }
     },
 
@@ -45,7 +53,7 @@ export default {
         }
 
         &-logo {
-
+            cursor: pointer;
         }
 
         &-links {
