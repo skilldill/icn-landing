@@ -22,8 +22,7 @@
                     <img :src="require('../../assets/phones/swipe-phone-1.svg')" alt="профиль">
                 </div>
                 <div class="phone-block phone-block-video">
-                    <img :src="require('../../assets/phones/swipe-phone-1.svg')" alt="профиль">
-                    <img class="swipe-video" :src="require('../../assets/phones/swipe-phone-video.gif')">
+                    <img width="226" :src="require('../../assets/phones/swipe-video.gif')" alt="профиль">
                 </div>
             </div>
             <FeatureList title="Поиск" :show="showSwipeList" fadeDirection="right" :list="[
@@ -102,17 +101,6 @@ export default {
                     border-radius: 50px;
                     &:first-child {
                         margin-right: 80px;
-                    }
-                }
-
-                .phone-block-video {
-                    position: relative;
-
-                    .swipe-video {
-                        position: absolute;
-                        width: 200px;
-                        top: 11px;
-                        left: 13px;
                     }
                 }
             }
