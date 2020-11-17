@@ -1,12 +1,14 @@
 <template>
     <div class="menu">
-        <div class="menu-logo">
-            <img :src="require('../../assets/icn-logo-menu.svg')" alt="">
-        </div>
-        <div class="menu-links">
-            <a :class="{'link': true, 'link-translate': !showLinkBtn}" href="#working">Как работает</a>
-            <a :class="{'link link-last': true, 'link-translate': !showLinkBtn}" href="#benefit">В чем польза</a>
-            <a :class="{'link link-last link-btn': true, 'link-btn-show': showLinkBtn }" href="#contacts">Попробовать бесплатно</a>
+        <div class="menu-content">
+            <div class="menu-logo">
+                <img :src="require('../../assets/icn-logo-menu.svg')" alt="">
+            </div>
+            <div class="menu-links">
+                <a :class="{'link': true, 'link-translate': !showLinkBtn}" href="#working">Как работает</a>
+                <a :class="{'link link-last': true, 'link-translate': !showLinkBtn}" href="#benefit">В чем польза</a>
+                <a :class="{'link link-last link-btn': true, 'link-btn-show': showLinkBtn }" href="#contacts">Попробовать бесплатно</a>
+            </div>
         </div>
     </div>
 </template>
@@ -29,14 +31,18 @@ export default {
 <style lang="scss" scoped>
     .menu {
         z-index: 1000;
-        align-items: center;
-        display: flex;
-        justify-content: space-between;
-        max-width: 1600px;
-        padding: 16px 100px;
         position: sticky;
         top: 0;
         background-color: white;
+
+        &-content {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1600px;
+            padding: 16px 100px;
+        }
 
         &-logo {
 

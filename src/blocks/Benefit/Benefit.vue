@@ -44,7 +44,9 @@ export default {
 <style lang="scss" scoped>
     .benefit {
         padding: 140px 100px;
-
+        max-width: 1600px;
+        margin: auto;
+        
         &-title {
             font-weight: bold;
             font-size: 64px;

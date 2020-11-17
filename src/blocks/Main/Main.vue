@@ -1,22 +1,24 @@
 <template>
     <div :class="mountedClass">
-        <div class="main-large-content">
-            <p>
-                <span>Развивайте нетворкинг</span> в вашей компа-
-                нии без усилий HR-отдела
-            </p>
-        </div>
-        <div class="phone-block">
-            <img :src="require('../../assets/phones/lock-phone.svg')" alt="icn-phone">
-            <img class="unlock-phone" :src="require('../../assets/phones/start-phone.svg')" alt="icn-phone">
-        </div>
-        <div class="main-default-content">
-            <p>
-                Подключите ICNetworking и ваши сотрудники начнут 
-                самостоятельно строить неформальные социальные 
-                связи полезные для вас и компании.
-            </p>
-            <a class="link-btn" href="#contacts">Попробовать бесплатно</a>
+        <div class="main-content">
+            <div class="main-large-content">
+                <p>
+                    <span>Развивайте нетворкинг</span> в вашей компа-
+                    нии без усилий HR-отдела
+                </p>
+            </div>
+            <div class="phone-block">
+                <img :src="require('../../assets/phones/lock-phone.svg')" alt="icn-phone">
+                <img class="unlock-phone" :src="require('../../assets/phones/start-phone.svg')" alt="icn-phone">
+            </div>
+            <div class="main-default-content">
+                <p>
+                    Подключите ICNetworking и ваши сотрудники начнут 
+                    самостоятельно строить неформальные социальные 
+                    связи полезные для вас и компании.
+                </p>
+                <a class="link-btn" href="#contacts">Попробовать бесплатно</a>
+            </div>
         </div>
     </div>
 </template>
@@ -46,12 +48,21 @@ export default {
 </script>
 <style lang="scss" scoped>
     .main {
-        padding: 0 100px;
         background-color: #EDF3FB;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        
+        height: 100vh;
+        width: 100%;
+        max-height: 1000px;
+
+        &-content {
+            padding: 0 100px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            max-width: 1600px;
+            margin: auto;
+        }
+
         .phone-block {
             position: relative;
 

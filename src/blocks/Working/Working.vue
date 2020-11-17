@@ -65,8 +65,8 @@ export default {
     mounted() {
         window.addEventListener('scroll', () => {
             this.showProfileList = window.scrollY >= 750;
-            this.showSwipeList = window.scrollY >= 1300;
-            this.showMeetingsList = window.scrollY >= 1920;
+            this.showSwipeList = window.scrollY >= 1000;
+            this.showMeetingsList = window.scrollY >= 1520;
         })
     }
 }
@@ -76,7 +76,9 @@ export default {
         padding: 0 200px;
         padding-top: 140px;
         padding-bottom: 132px;
-
+        max-width: 1600px;
+        margin: auto;
+            
         &-title {
             font-weight: bold;
             font-size: 64px;

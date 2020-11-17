@@ -1,31 +1,33 @@
 <template>
     <div :class="{'features': true, 'features-show': show}">
-        <div class="features-item">
-            <div class="circle">
-                <img :src="require('../../assets/icons/swipe-hande.svg')" alt="swipew">
+        <div class="features-content">
+            <div class="features-item">
+                <div class="circle">
+                    <img :src="require('../../assets/icons/swipe-hande.svg')" alt="swipew">
+                </div>
+                <p>Свайпайте</p>
+                <p>коллег</p>
             </div>
-            <p>Свайпайте</p>
-            <p>коллег</p>
-        </div>
-        <div class="features-item">
-            <div class="circle">
-                <img :src="require('../../assets/icons/eye.svg')" alt="swipew">
+            <div class="features-item">
+                <div class="circle">
+                    <img :src="require('../../assets/icons/eye.svg')" alt="swipew">
+                </div>
+                <p>Просматривайте</p>
+                <p>совпадения</p>
             </div>
-            <p>Просматривайте</p>
-            <p>совпадения</p>
-        </div>
-        <div class="features-item">
-            <div class="circle">
-                <img :src="require('../../assets/icons/calendar.svg')" alt="swipew">
+            <div class="features-item">
+                <div class="circle">
+                    <img :src="require('../../assets/icons/calendar.svg')" alt="swipew">
+                </div>
+                <p>Назначайте</p>
+                <p>встречи</p>
             </div>
-            <p>Назначайте</p>
-            <p>встречи</p>
-        </div>
-        <div class="features-item">
-            <div class="circle">
-                <img :src="require('../../assets/icons/members.svg')" alt="swipew">
+            <div class="features-item">
+                <div class="circle">
+                    <img :src="require('../../assets/icons/members.svg')" alt="swipew">
+                </div>
+                <p>Общайтесь</p>
             </div>
-            <p>Общайтесь</p>
         </div>
     </div>
 </template>
@@ -49,11 +51,16 @@ export default {
 </script>
 <style lang="scss" scoped>
     .features {
-        display: flex;
-        justify-content: space-between;
-        padding: 160px 100px;
         background-color: #F8F8F8;
         
+        &-content {
+            display: flex;
+            justify-content: space-between;
+            padding: 160px 100px;
+            max-width: 1600px;
+            margin: auto;
+        }
+
         &-item {
             display: flex;
             flex-direction: column;
