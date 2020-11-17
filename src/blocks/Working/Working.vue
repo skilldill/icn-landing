@@ -10,7 +10,7 @@
                 <div class="phone-block">
                     <img :src="require('../../assets/phones/profile-phone-1.svg')" alt="профиль">
                 </div>
-                <div class="phone-block">
+                <div class="phone-block phone-block-video">
                     <img :src="require('../../assets/phones/profile-phone-2.svg')" alt="профиль">
                 </div>
             </div>
@@ -21,8 +21,9 @@
                 <div class="phone-block">
                     <img :src="require('../../assets/phones/swipe-phone-1.svg')" alt="профиль">
                 </div>
-                <div class="phone-block">
+                <div class="phone-block phone-block-video">
                     <img :src="require('../../assets/phones/swipe-phone-1.svg')" alt="профиль">
+                    <img class="swipe-video" :src="require('../../assets/phones/swipe-phone-video.gif')">
                 </div>
             </div>
             <FeatureList title="Поиск" :show="showSwipeList" fadeDirection="right" :list="[
@@ -63,6 +64,8 @@ export default {
     },
 
     mounted() {
+        console.log(this.videoHtml);
+
         window.addEventListener('scroll', () => {
             this.showProfileList = window.scrollY >= 750;
             this.showSwipeList = window.scrollY >= 1300;
@@ -93,9 +96,23 @@ export default {
                 display: flex;
 
                 .phone-block {
-
+                    box-shadow: 20px 20px 60px rgba(98, 98, 98, 0.1), 40px 40px 40px rgba(98, 98, 98, 0.05), 25px 25px 30px rgba(98, 98, 98, 0.05), 20px 20px 20px rgba(98, 98, 98, 0.05), 10px 8px 20px rgba(98, 98, 98, 0.1);
+                    background-color: transparent;
+                    height: 456px;
+                    border-radius: 50px;
                     &:first-child {
                         margin-right: 80px;
+                    }
+                }
+
+                .phone-block-video {
+                    position: relative;
+
+                    .swipe-video {
+                        position: absolute;
+                        width: 200px;
+                        top: 11px;
+                        left: 13px;
                     }
                 }
             }
