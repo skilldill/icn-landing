@@ -7,13 +7,23 @@
                 'Профиль можно заполнить автоматически данными корпоративного аккаунта.']" 
             />
             <div class="phones">
-                <img :src="require('../../assets/phones/profile-phones.svg')" alt="профиль">
+                <div class="phone-block">
+                    <img :src="require('../../assets/phones/profile-phone-1.svg')" alt="профиль">
+                </div>
+                <div class="phone-block">
+                    <img :src="require('../../assets/phones/profile-phone-2.svg')" alt="профиль">
+                </div>
             </div>
         </div>
 
         <div class="working-block">
             <div class="phones">
-                <img :src="require('../../assets/phones/swipe-phones.svg')" alt="swipe">
+                <div class="phone-block">
+                    <img :src="require('../../assets/phones/swipe-phone-1.svg')" alt="профиль">
+                </div>
+                <div class="phone-block">
+                    <img :src="require('../../assets/phones/swipe-phone-1.svg')" alt="профиль">
+                </div>
             </div>
             <FeatureList title="Поиск" :show="showSwipeList" fadeDirection="right" :list="[
                 'Смахивайте влево, пока не найдете человека, с которым захотите пообщаться.', 
@@ -27,7 +37,12 @@
                 'Коллега не узнает, если вы откажетесь общаться.']"
             />
             <div class="phones">
-                <img :src="require('../../assets/phones/meetings-phones.svg')" alt="профиль">
+                <div class="phone-block">
+                    <img :src="require('../../assets/phones/meetings-phone-1.svg')" alt="профиль">
+                </div>
+                <div class="phone-block">
+                    <img :src="require('../../assets/phones/meetings-phone-2.svg')" alt="профиль">
+                </div>
             </div>
         </div>
     </div>
@@ -73,6 +88,17 @@ export default {
             justify-content: space-between;
             padding-bottom: 32px;
             padding-top: 65px;
+
+            .phones {
+                display: flex;
+
+                .phone-block {
+
+                    &:first-child {
+                        margin-right: 80px;
+                    }
+                }
+            }
         }
     }
 </style>
