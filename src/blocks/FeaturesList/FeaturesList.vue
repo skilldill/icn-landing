@@ -1,5 +1,5 @@
 <template>
-    <div class="features">
+    <div :class="{'features': true, 'features-show': show}">
         <div class="features-item">
             <div class="circle">
                 <img :src="require('../../assets/icons/swipe-hande.svg')" alt="swipew">
@@ -31,7 +31,20 @@
 </template>
 <script>
 export default {
-    name: "FeaturesList"
+    name: "FeaturesList",
+
+    data() {
+        return {
+            show: false,
+        }
+    },
+
+    mounted() {
+        window.addEventListener('scroll', () => {
+            console.log(window.scrollY);
+            this.show = window.scrollY >= 2090;
+        })
+    }
 }
 </script>
 <style lang="scss" scoped>
@@ -56,14 +69,35 @@ export default {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+
+                img {
+                    transition: all .6s;
+                    opacity: 0;
+                }
             }
 
             p {
+                transition: all .6s;
+                opacity: 0;
                 font-size: 36px;
                 line-height: 50px;
                 text-align: center;
                 color: #222222;
                 margin: 0;
+            }
+        }
+    }
+
+    .features-show {
+        .features-item {
+            .circle {
+                img {
+                    opacity: 1;
+                }
+            }
+
+            p {
+                opacity: 1;
             }
         }
     }

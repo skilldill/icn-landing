@@ -63,8 +63,6 @@ export default {
     },
 
     mounted() {
-        console.log(this.videoHtml);
-
         window.addEventListener('scroll', () => {
             this.showProfileList = window.scrollY >= 750;
             this.showSwipeList = window.scrollY >= 1300;
