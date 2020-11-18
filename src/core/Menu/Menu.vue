@@ -5,9 +5,9 @@
                 <img :src="require('../../assets/icn-logo-menu.svg')" alt="">
             </div>
             <div class="menu-links">
-                <a :class="{'link': true, 'link-translate': !showLinkBtn}" href="#working">Как работает</a>
-                <a :class="{'link link-last': true, 'link-translate': !showLinkBtn}" href="#benefit">В чём польза</a>
-                <a @click.prevent="goto('/contacts')"  :class="{'link link-last link-btn': true, 'link-btn-show': showLinkBtn }" href="#contacts">
+                <a :class="{'link': true, 'link-decorated': decoratedWorking && !decoratedBenefit, 'link-translate': !showLinkBtn}" href="#working">Как работает <div></div></a>
+                <a :class="{'link link-last': true, 'link-decorated': decoratedWorking && decoratedBenefit, 'link-translate': !showLinkBtn}" href="#benefit">В чём польза <div></div></a>
+                <a @click.prevent="goto(!!showLinkBtn ? '/contacts' : '/benefit')"  :class="{'link link-last link-btn': true, 'link-btn-show': showLinkBtn }" href="#">
                     Попробовать бесплатно
                 </a>
             </div>
@@ -19,7 +19,9 @@ export default {
     name: "Menu",
     data() {
         return {
-            showLinkBtn: false
+            showLinkBtn: false,
+            decoratedWorking: false,
+            decoratedBenefit: false
         }
     },
 
@@ -32,6 +34,8 @@ export default {
     mounted() {
         window.addEventListener('scroll', () => {
             this.showLinkBtn = window.scrollY >= 500;
+            this.decoratedWorking = window.scrollY >= 700;
+            this.decoratedBenefit = window.scrollY >= 3300;
         })
     }
 }
@@ -65,6 +69,17 @@ export default {
                 text-decoration: none;
                 transition: all .3s;
                 transform: translateX(0px);
+                position: relative;
+
+                div {
+                    position: absolute;
+                    height: 3px;
+                    left: 0;
+                    right: 0;
+                    background-color:#5295F1;
+                    transition: all .3s;
+                    transform: scale(0);
+                }
             } 
 
             .link-last {
@@ -86,6 +101,10 @@ export default {
 
             .link-translate {
                 transform: translateX(410px);
+            }
+
+            .link-decorated {
+                div { transform: scale(1); }
             }
         }
     }
