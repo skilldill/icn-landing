@@ -4,17 +4,21 @@
             <div class="contacts-form">
                 <form @submit.prevent="handleSubmit()">
                     <h3>Попробуйте 90 дней бесплатно</h3>
-                    <div class="control">
-                        <input v-model="form.name" type="text" placeholder="Имя">
+                    <div :class="{'control': true, 'control-error': !form.name.valid}">
+                        <input v-model="form.name.value" type="text" placeholder="Имя">
+                        <small v-if="!!form.name.errorMessage">{{form.name.errorMessage}}</small>
                     </div>
-                    <div class="control">
-                        <input v-model="form.organizationName" type="text" placeholder="Название компании">
+                    <div :class="{'control': true, 'control-error': !form.organizationName.valid}">
+                        <input v-model="form.organizationName.value" type="text" placeholder="Название компании">
+                        <small v-if="!!form.organizationName.errorMessage">{{form.organizationName.errorMessage}}</small>
                     </div>
-                    <div class="control">
-                        <input v-model="form.phone" type="text" placeholder="+7 (___) ___ - __ - __">
+                    <div :class="{'control': true, 'control-error': !form.phone.valid}">
+                        <input v-model="form.phone.value" type="text" placeholder="+7 (___) ___ - __ - __">
+                        <small v-if="!!form.phone.errorMessage">{{form.phone.errorMessage}}</small>
                     </div>
-                    <div class="control">
-                        <input v-model="form.email" type="text" placeholder="Эл.почта">
+                    <div :class="{'control': true, 'control-error': !form.email.valid}">
+                        <input v-model="form.email.value" type="text" placeholder="Эл.почта">
+                        <small v-if="!!form.email.errorMessage">{{form.email.errorMessage}}</small>
                     </div>
                     <div class="control">
                         <button>Отправить</button>
@@ -34,16 +38,40 @@ export default {
     data() {
         return {
             form: {
-                name: '',
-                phone: '',
-                email: '',
-                organizationName: ''
+                name: { value: '', valid: true, errorMessage: '' },
+                phone: { value: '', valid: true, errorMessage: '' },
+                email: { value: '', valid: true, errorMessage: '' },
+                organizationName: { value: '', valid: true, errorMessage: '' },
             }
         }
     },
 
     methods: {
+        checkEmptyField(field, cb) {
+            if (field.value.length === 0) {
+                field.valid = false;
+                field.errorMessage = 'Поле не должно быть пустым';
+
+                cb();
+            } else {
+                field.valid = true;
+                field.errorMessage = '';
+            }
+        },
+
+        checkValidForm() {
+            let isValid = true;
+
+            this.checkEmptyField(this.form.name, () => isValid = false);
+            this.checkEmptyField(this.form.organizationName, () => isValid = false);
+            this.checkEmptyField(this.form.phone, () => isValid = false);
+            this.checkEmptyField(this.form.email, () => isValid = false);
+
+            return isValid;
+        },
+
         handleSubmit() {
+            this.checkValidForm();
             console.log(this.form);
         }
     }
@@ -107,6 +135,12 @@ export default {
                         }
                     }
 
+                    small {
+                        font-size: 18px;
+                        line-height: 36px;
+                        color: #FF5F61;
+                    }
+
                     button {
                         cursor: pointer;
                         background-color: #5295F1;
@@ -118,6 +152,12 @@ export default {
                         width: 100%;
                         padding: 18px 46px;
                         outline: none;
+                    }
+                }
+
+                .control-error {
+                    input {
+                        box-shadow: 0 0 0 2px#FF5F61;
                     }
                 }
             }
