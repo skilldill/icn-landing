@@ -32,16 +32,18 @@
     </div>
 </template>
 <script>
+import { EMAIL_TEMPLATE, MOBILE_TEMPLATE } from "../../shared/constants";
+
 export default {
     name: "Contacts",
 
     data() {
         return {
             form: {
-                name: { value: '', valid: true, errorMessage: '' },
-                phone: { value: '', valid: true, errorMessage: '' },
-                email: { value: '', valid: true, errorMessage: '' },
-                organizationName: { value: '', valid: true, errorMessage: '' },
+                name: { value: '', valid: true, errorMessage: null },
+                phone: { value: '', valid: true, errorMessage: null },
+                email: { value: '', valid: true, errorMessage: null },
+                organizationName: { value: '', valid: true, errorMessage: null },
             }
         }
     },
@@ -55,7 +57,33 @@ export default {
                 cb();
             } else {
                 field.valid = true;
-                field.errorMessage = '';
+                field.errorMessage = null;
+            }
+        },
+
+        checkValidEmail(cb) {
+            const isValid = EMAIL_TEMPLATE.test(this.form.email.value);
+            
+            if (!isValid) { 
+                this.form.email.valid = false;
+                this.form.email.errorMessage = 'Неверный формат почты';
+                cb();
+            } else {
+                this.form.email.valid = true;
+                this.form.email.errorMessage = null;
+            }
+        },
+
+        checkValidMobile(cb) {
+            const isValid = MOBILE_TEMPLATE.test(this.form.phone.value);
+            
+            if (!isValid) { 
+                this.form.phone.valid = false;
+                this.form.phone.errorMessage = 'Неверный формат телефона';
+                cb();
+            } else {
+                this.form.phone.valid = true;
+                this.form.phone.errorMessage = null;
             }
         },
 
@@ -66,6 +94,8 @@ export default {
             this.checkEmptyField(this.form.organizationName, () => isValid = false);
             this.checkEmptyField(this.form.phone, () => isValid = false);
             this.checkEmptyField(this.form.email, () => isValid = false);
+            this.checkValidEmail(() => isValid = false);
+            this.checkValidMobile(() => isValid = false);
 
             return isValid;
         },
@@ -86,13 +116,15 @@ export default {
             max-width: 1600px;
             margin: auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             padding: 0 200px;
             padding-top: 30px;
         }
 
         &-form {
+            margin-right: 230px;
+
             form {
                 background-color: #FFFFFF;
                 border: 1px solid #BABABA;
@@ -156,6 +188,8 @@ export default {
                 }
 
                 .control-error {
+                    margin-bottom: 8px;
+                    
                     input {
                         box-shadow: 0 0 0 2px#FF5F61;
                     }
