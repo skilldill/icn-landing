@@ -43,7 +43,6 @@ export default {
 
     mounted() {
         window.addEventListener('scroll', () => {
-            console.log(window.scrollY);
             this.show = window.scrollY >= 2390;
         })
     }
