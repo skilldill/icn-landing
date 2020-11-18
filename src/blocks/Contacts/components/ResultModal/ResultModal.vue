@@ -8,7 +8,7 @@
                     <p>
                         Мы перезвоним в рабочее время с 10:00 до 18:00
                     </p>
-                    <a class="button" href="">Готово</a>
+                    <a @click.prevent="goToMain()" class="button" href="">Готово</a>
                 </div>
                 <div class="modal-block modal-block-loading">
                     <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
@@ -26,6 +26,12 @@ export default {
     name: "ResultModal",
     props: {
         status: String
+    },
+
+    methods: {
+        goToMain() {
+            this.$router.push('/');
+        }
     }
 }
 </script>
