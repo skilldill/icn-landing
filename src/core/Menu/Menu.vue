@@ -2,12 +2,12 @@
     <div class="menu">
         <div class="menu-content">
             <div class="menu-logo" @click="goto('/')">
-                <img :src="require('../../assets/icn-logo-menu.svg')" alt="">
+                <img :src="require('../../assets/icn-logo-menu.svg')" alt="icnetworking">
             </div>
             <div class="menu-links">
-                <a :class="{'link': true, 'link-decorated': decoratedWorking && !decoratedBenefit, 'link-translate': !showLinkBtn}" href="#working">Как работает <div></div></a>
-                <a :class="{'link link-last': true, 'link-decorated': decoratedWorking && decoratedBenefit, 'link-translate': !showLinkBtn}" href="#benefit">В чём польза <div></div></a>
-                <a @click.prevent="goto(!!showLinkBtn ? '/contacts' : '/benefit')"  :class="{'link link-last link-btn': true, 'link-btn-show': showLinkBtn }" href="#">
+                <a @click.prevent="handleScrollTo(800)" :class="{'link': true, 'link-decorated': decoratedWorking && !decoratedBenefit, 'link-translate': !showLinkBtn}" href="#working">Как работает <div></div></a>
+                <a @click.prevent="handleScrollTo(3500)" :class="{'link link-last': true, 'link-decorated': decoratedWorking && decoratedBenefit, 'link-translate': !showLinkBtn}" href="#benefit">В чём польза <div></div></a>
+                <a @click.prevent="goto('/contacts')" :class="{'link link-last link-btn': true, 'link-btn-show': showLinkBtn }" href="#">
                     Попробовать бесплатно
                 </a>
             </div>
@@ -28,6 +28,27 @@ export default {
     methods: {
         goto(path) {
             this.$router.push(path);
+        },
+
+        handleScrollTo(posY) {
+            const { path } = this.$router.currentRoute;
+
+            if (path === '/contacts') {
+                this.$router.push('/');
+                const timeOut = setTimeout(() => {
+                    window.scrollTo({
+                        top: posY,
+                        behavior: "smooth"
+                    });
+                    clearTimeout(timeOut);
+                }, 100);
+                return;
+            }
+
+            window.scrollTo({
+                top: posY,
+                behavior: "smooth"
+            });
         }
     },
 
@@ -93,10 +114,12 @@ export default {
                 padding: 10px 40px;
                 color: white;
                 opacity: 0;
+                transform: scale(0);
             }
 
             .link-btn-show {
                 opacity: 1;
+                transform: scale(1);
             }
 
             .link-translate {
