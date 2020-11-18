@@ -29,13 +29,18 @@
                 <img :src="require('../../assets/phones/contacts-phone.svg')" alt="icnetworking">
             </div>
         </div>
+
+        <ResultModal v-if="!!sendingStatus" :status="sendingStatus" @on-close="handleCloseModal()" />
     </div>
 </template>
 <script>
+import { ResultModal } from "./components";
 import { EMAIL_TEMPLATE, MOBILE_TEMPLATE } from "../../shared/constants";
 
 export default {
     name: "Contacts",
+    
+    components: { ResultModal },
 
     data() {
         return {
@@ -44,7 +49,9 @@ export default {
                 phone: { value: '', valid: true, errorMessage: null },
                 email: { value: '', valid: true, errorMessage: null },
                 organizationName: { value: '', valid: true, errorMessage: null },
-            }
+            },
+
+            sendingStatus: null,
         }
     },
 
@@ -101,9 +108,21 @@ export default {
         },
 
         handleSubmit() {
-            this.checkValidForm();
-            console.log(this.form);
-        }
+            const isValidForm = this.checkValidForm();
+            
+            if (isValidForm) {
+                this.sendingStatus = 'send';
+
+                const timeout = setTimeout(() => {
+                    this.sendingStatus = 'success';
+                    clearTimeout(timeout);
+                }, 3000);
+            }
+        },
+
+        handleCloseModal() {
+            this.sendingStatus = null;
+        } 
     }
 }
 </script>
@@ -189,7 +208,7 @@ export default {
 
                 .control-error {
                     margin-bottom: 8px;
-                    
+
                     input {
                         box-shadow: 0 0 0 2px#FF5F61;
                     }
