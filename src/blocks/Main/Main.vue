@@ -12,9 +12,9 @@
             </div>
             <div class="main-default-content">
                 <p>
-                    Подключите ICNetworking и ваши сотрудники начнут 
+                    Подключите ICNetworking, и ваши сотрудники начнут 
                     самостоятельно строить неформальные социальные 
-                    связи полезные для вас и компании.
+                    связи, полезные для вас и компании
                 </p>
                 <a @click.prevent="gotoContacts()" class="link-btn" href="#contacts">Попробовать бесплатно</a>
             </div>

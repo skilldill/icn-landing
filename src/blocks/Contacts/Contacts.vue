@@ -34,6 +34,7 @@
     </div>
 </template>
 <script>
+import axios from "axios";
 import { ResultModal } from "./components";
 import { EMAIL_TEMPLATE, MOBILE_TEMPLATE } from "../../shared/constants";
 
@@ -110,13 +111,24 @@ export default {
         handleSubmit() {
             const isValidForm = this.checkValidForm();
             
+            const sendForm = async () => {
+                try {
+                    await axios.post('https://dev.icnetworking.ru/api/landing/contact_forms/', {
+                        "company_name": this.form.organizationName.value,
+                        "email": this.form.email.value,
+                        "phone_number": this.form.phone.value,
+                        "full_name": this.form.name.value,
+                    })
+                    this.sendingStatus = 'success';
+                } catch(error) {
+                    this.sendingStatus = 'error';
+                }
+            }
+
             if (isValidForm) {
                 this.sendingStatus = 'send';
 
-                const timeout = setTimeout(() => {
-                    this.sendingStatus = 'success';
-                    clearTimeout(timeout);
-                }, 3000);
+                sendForm();
             }
         },
 
