@@ -35,6 +35,10 @@ export default {
     body {
       zoom: .85;
     }
+
+    .link-btn {
+      font-size: 25px;
+    }
   }
 
   @media screen and (max-width: 1024px) {
