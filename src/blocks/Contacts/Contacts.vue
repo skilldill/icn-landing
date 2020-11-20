@@ -46,10 +46,10 @@ export default {
     data() {
         return {
             form: {
-                name: { value: '', valid: true, errorMessage: null },
+                name: { value: 'a', valid: true, errorMessage: null },
                 phone: { value: '', valid: true, errorMessage: null },
-                email: { value: '', valid: true, errorMessage: null },
-                organizationName: { value: '', valid: true, errorMessage: null },
+                email: { value: 'skilldill@yandex.ru', valid: true, errorMessage: null },
+                organizationName: { value: 's', valid: true, errorMessage: null },
             },
 
             sendingStatus: null,
@@ -109,7 +109,20 @@ export default {
         },
 
         preparePhone(phone) {
-            const updatedPhone = phone.replace('+7', '8').replaceAll(' ', '');
+            let updatedPhone = '';
+
+            if (phone[0] === '7') {
+                updatedPhone = `+${phone}`;
+            } else {
+                updatedPhone = phone;
+            }
+            
+            updatedPhone = updatedPhone.replaceAll(' ', '')
+                .replace('+7', '8')
+                .replace('(', '')
+                .replace(')', '')
+                .replaceAll('-', '')
+                
             return updatedPhone;
         },
 
