@@ -20,4 +20,22 @@ export default {
     margin: 0;
     zoom: .9;
   }
+
+  @media screen and (max-width: 1160px) {
+    body {
+      zoom: .75;
+    }
+  }
+
+  @media screen and (max-width: 1235px) {
+    body {
+      zoom: .85;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    body {
+      zoom: .7;
+    }
+  }
 </style>
