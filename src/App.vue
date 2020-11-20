@@ -25,6 +25,10 @@ export default {
     body {
       zoom: .75;
     }
+
+    .feature-list-item {
+        max-width: 300px;
+    }
   }
 
   @media screen and (max-width: 1235px) {
