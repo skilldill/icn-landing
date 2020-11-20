@@ -108,6 +108,11 @@ export default {
             return isValid;
         },
 
+        preparePhone(phone) {
+            const updatedPhone = phone.replace('+7', '8').replaceAll(' ', '');
+            return updatedPhone;
+        },
+
         handleSubmit() {
             const isValidForm = this.checkValidForm();
             
@@ -116,7 +121,7 @@ export default {
                     await axios.post('https://dev.icnetworking.ru/api/landing/contact_forms/', {
                         "company_name": this.form.organizationName.value,
                         "email": this.form.email.value,
-                        "phone_number": this.form.phone.value,
+                        "phone_number": this.preparePhone(this.form.phone.value),
                         "full_name": this.form.name.value,
                     })
                     this.sendingStatus = 'success';
